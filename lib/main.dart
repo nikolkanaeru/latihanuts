@@ -79,11 +79,104 @@ class ProfilePage extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyLarge,
                   textAlign: TextAlign.center,
                 ),
+                const SizedBox(height: 25),
+                Card(
+                  child: Column(
+                    children: const [
+                      InfoTile(
+                        icon: Icons.email,
+                        title: 'Email',
+                        value: 'azmi@example.com',
+                      ),
+                      InfoTile(
+                        icon: Icons.phone,
+                        title: 'No. Telepon',
+                        value: '081234567890',
+                      ),
+                      InfoTile(
+                        icon: Icons.class_,
+                        title: 'Kelas',
+                        value: 'TI 23 SE',
+                      ),
+                      InfoTile(
+                        icon: Icons.code,
+                        title: 'Github',
+                        value: 'https://github.com/nikolkanaeru',
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 25),
+                Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Keahlian & Hobi',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        const InfoTile(
+                          icon: Icons.code,
+                          title: 'Software Engineering',
+                          value: 'Flutter, Laravel, PHP',
+                        ),
+                        const InfoTile(
+                          icon: Icons.fitness_center,
+                          title: 'Olahraga',
+                          value: 'Gym & Fixie Bicycle',
+                        ),
+                        const InfoTile(
+                          icon: Icons.sports_esports,
+                          title: 'Hobi',
+                          value: 'Gaming & Membaca Manga',
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Terimakasih telah mengunjungi halaman profil saya!'),
+            ),
+          );
+        },
+        child: const Icon(Icons.thumb_up),
+      ),
+    );
+  }
+}
+
+class InfoTile extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String value;
+
+  const InfoTile({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.value,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(title),
+      subtitle: Text(value),
     );
   }
 }
